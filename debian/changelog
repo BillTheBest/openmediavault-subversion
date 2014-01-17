@@ -1,0 +1,5 @@
+openmediavault-subversion (0.5) stable; urgency=low
+
+  * Port from openmediavault-git
+
+ -- OpenMediaVault Plugin Developers <plugins@omv-extras.org>  Sat, 11 Jan 2014 23:03:00 +0200
