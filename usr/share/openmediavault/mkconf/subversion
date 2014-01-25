@@ -78,7 +78,6 @@ if [ `echo $CTEST | grep -c ___FAILED___` -gt 0 ]; then
         echo "Config test failed. Removing ${OMV_SUBVERSION_CONFIG}..."
     # Pass error to web page
         echo `/usr/sbin/apache2ctl configtest 2>&1 || echo `
-        cp ${OMV_SUBVERSION_CONFIG} /root/
         /bin/rm -f ${OMV_SUBVERSION_CONFIG}
         exit 1
 fi

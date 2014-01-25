@@ -93,7 +93,7 @@ class OMVRpcServiceSubversion extends OMVRpcServiceAbstract {
 
         // Don't change repo root if we have existing repos
         if (is_array($econf['repos']) && count($econf['repos']) && $econf['repository-root'] != $params['repository-root']) {
-            throw new Exception("Refusing to chnage repository root while repositories exist.");
+            throw new Exception("Refusing to change repository root while repositories exist.");
         }
 
         // Create repo root
@@ -238,15 +238,15 @@ class OMVRpcServiceSubversion extends OMVRpcServiceAbstract {
 
             // If this isn't an existing repository, create it
             if (! file_exists($path)) {
-                $cmd = "sudo su - www-data -c 'subversion init --bare {$path} 2>&1'";
+                $cmd = "sudo su - www-data -c 'svnadmin create {$path} 2>&1'";
                 OMVUtil::exec($cmd, $output, $res);
                 if ($res !== 0)
                     throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
 
-                $cmd = "sudo su - www-data -c 'cd {$path} && subversion update-server-info 2>&1'";
+                /*$cmd = "sudo su - www-data -c 'cd {$path} && subversion update-server-info 2>&1'";
                 OMVUtil::exec($cmd, $output, $res);
                 if ($res !== 0)
-                    throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));
+                    throw new OMVException(OMVErrorMsg::E_EXEC_FAILED, $cmd, implode("\n", $output));*/
             }
 
             // add perms array
