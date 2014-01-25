@@ -44,7 +44,7 @@ cat <<EOF > ${OMV_SUBVERSION_CONFIG}
 AddExternalAuth pwauth /usr/sbin/pwauth
 SetExternalAuthMethod pwauth pipe
 
-<Location /svn/>
+<Location /svn>
    DAV svn
    SVNListParentPath on
    AuthType Basic
@@ -67,7 +67,7 @@ xmlstarlet sel -t -m "//services/subversion" \
   -o "AuthzSVNAccessFile /etc/subversion/authz" -n \
   -v "concat('   SVNParentPath ',repository-root)" -n \
   -v "concat('   AuthName \"',realm,'\"')" -n \
-  -o "&lt;/Location&gt;" -n \
+  -o "</Location>" -n \
   ${OMV_CONFIG_FILE} | xmlstarlet unesc >> ${OMV_SUBVERSION_CONFIG}
 
 # Check that configtest passed. We don't want
@@ -78,6 +78,7 @@ if [ `echo $CTEST | grep -c ___FAILED___` -gt 0 ]; then
         echo "Config test failed. Removing ${OMV_SUBVERSION_CONFIG}..."
     # Pass error to web page
         echo `/usr/sbin/apache2ctl configtest 2>&1 || echo `
+        cp ${OMV_SUBVERSION_CONFIG} /root/
         /bin/rm -f ${OMV_SUBVERSION_CONFIG}
         exit 1
 fi
