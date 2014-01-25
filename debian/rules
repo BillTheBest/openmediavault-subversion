@@ -13,8 +13,8 @@ install:
 	dh_prep
 	dh_installdirs
 	dh_install
-	chmod +x $(CURDIR)/usr/share/openmediavault/mkconf/subversion
-	chmod +x $(CURDIR)/usr/share/openmediavault/mkconf/subversion-privileges
+	chmod +x $(CURDIR)/debian/openmediavault-subversion/usr/share/openmediavault/mkconf/subversion
+	chmod +x $(CURDIR)/debian/openmediavault-subversion/usr/share/openmediavault/mkconf/subversion-privileges
 
 binary-indep: install omv_clean_scm
 	dh_testdir
