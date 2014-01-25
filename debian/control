@@ -5,7 +5,7 @@ Maintainer: OpenMediaVault Plugin Developers <plugins@omv-extras.org>
 Build-Depends: debhelper (>= 8.0.0 )
 Standards-Version: 3.9.3
 
-Package: openmediavault-git
+Package: openmediavault-subversion
 Architecture: all
 Depends: ${misc:Depends}, openmediavault (>= 0.5.14), apache2.2-common,
  subversion, libapache2-svn, libapache2-mod-authnz-external, pwauth
